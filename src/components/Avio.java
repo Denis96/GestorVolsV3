@@ -5,6 +5,7 @@
 package components;
 
 import principal.Component;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,8 +17,9 @@ public class Avio implements Component{
     private String fabricant;
     private String model;
     private int capacitat;
-    private Classe[] classes;
-    private int posicioClasses; //Atribut que controla la primera posició vuida del vector
+    private ArrayList<Classe> classes;
+    //private Classe[] classes;
+    //private int posicioClasses; //Atribut que controla la primera posició vuida del vector
 
     /*
      CONSTRUCTOR
@@ -32,8 +34,9 @@ public class Avio implements Component{
         this.fabricant = fabricant;
         this.model = model;
         this.capacitat = capacitat;
-        classes = new Classe[4];
-        posicioClasses = 0;
+        classes = new ArrayList();
+        //classes = new Classe[4];
+        //posicioClasses = 0;
     }
 
     /*
@@ -71,21 +74,29 @@ public class Avio implements Component{
         this.capacitat = capacitat;
     }
 
-    public Classe[] getClasses() {
+    /*public Classe[] getClasses() {
+        return classes;
+    }*/
+    
+    public ArrayList getClasses(){
         return classes;
     }
 
-    public void setClasses(Classe[] classes) {
+    /*public void setClasses(Classe[] classes) {
+        this.classes = classes;
+    }*/
+    
+    public void setClasses(ArrayList classes) {
         this.classes = classes;
     }
 
-    public int getPosicioClasses() {
+    /*public int getPosicioClasses() {
         return posicioClasses;
     }
 
     public void setPosicioClasses(int posicioClasses) {
         this.posicioClasses = posicioClasses;
-    }
+    }*/
 
 
     /*
@@ -166,15 +177,16 @@ public class Avio implements Component{
 
         if (seleccionarClasse(classe.getNom()) == -1) { //La classe no existeix
 
-            for (int i = 0; i < posicioClasses; i++) {
-                capacitatClasses += classes[i].getCapacitat();
+            //for (int i = 0; i < posicioClasses; i++) {
+            for (int i = 0; i < classes.size(); i++) {
+                //capacitatClasses += classes[i].getCapacitat();
+                capacitatClasses += classes.get(i).getCapacitat();
             }
 
             if (capacitatClasses + classe.getCapacitat() <= capacitat) {
-                classes[posicioClasses] = classe;
+                //classes[posicioClasses] = classe;
+                classes.add(classe);
             }
-
-            posicioClasses++;
 
         } else if (seleccionarClasse(classe.getNom()) != -1 || capacitatClasses + classe.getCapacitat() > capacitat) {
             System.out.println("\nLa classe no s'ha pogut afegir");
@@ -187,8 +199,9 @@ public class Avio implements Component{
         boolean trobat = false;
         int pos = -1;
 
-        for (int i = 0; i < posicioClasses && !trobat; i++) {
-            if (classes[i].getNom().equals(nom)) {
+        //for (int i = 0; i < posicioClasses && !trobat; i++) {
+        for (int i = 0; i < classes.size() && !trobat; i++) {
+            if (classes.get(i).getNom().equals(nom)) {
                 pos = i;
                 trobat = true;
             }
