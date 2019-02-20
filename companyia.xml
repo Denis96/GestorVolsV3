@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<companyia codi="1" nom="Avions S.L.">
+  <avio codi="123" fabricant="Airbus" model="282" capacitat="540">
+    <classe nom="turista" capacitat="400"/>
+    <classe nom="preferent" capacitat="140"/>
+  </avio>
+  <rutaNacional codi="BC123" aeroportOri="El Prat" aeroportDes="Son Sant Joan" distancia="220" pais="Espanya"/>
+  <rutaInternacional codi="RU233" aeroportOri="El Prat" aeroportDes="Tegel" distancia="1866,2" paisOri="Espanya" paisDes="Alemanya"/>
+  <rutaIntercontinental codi="ER456" aeroportOri="El Prat" aeroportDes="Internacional de Pekín" distancia="8798" paisOri="Espanya" paisDes="China" continentOri="Europa" continentDes="Àsia"/>
+  <rutaTransoceanica codi="BN567" aeroportOri="El Prat" aeroportDes="John F. Kennedy" distancia="6162" paisOri="Espanya" paisDes="EEUU" continentOri="Europa" continentDes="Amèrica" ocea="Atlàntic"/>
+  <tripulantCabina passaport="ZAB000221" nom="Pepa Lia" edat="40" dataAlta="22-02-2002" horesVol="2000" rang="Comandant" barres="4"/>
+  <TCP passaport="WWW000000" nom="Pedro Gong" edat="20" dataAlta="22-02-2018" horesVol="50" rang=""/>
+  <vol codi="WW2345" ruta="New York" avio="123" dataSortida="22-02-2018" dataArribada="23-02-2018" horaSortida="22:00" horaArribada="08:05" durada="6h-22m">
+    <tripulantCabina passaport="ZAB000221" nom="Pepa Lia" edat="40" dataAlta="22-02-2002" horesVol="2000" rang="Comandant" barres="4"/>
+    <TCP passaport="WWW000000" nom="Pedro Gong" edat="20" dataAlta="22-02-2018" horesVol="50" rang=""/>
+  </vol>
+</companyia>
