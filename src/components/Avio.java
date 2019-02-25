@@ -6,6 +6,9 @@ package components;
 
 import principal.Component;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import principal.GestioVolsExcepcio;
 
 /**
  *
@@ -108,15 +111,18 @@ public class Avio implements Component{
     formats per una única paraula, per exemple, Airbus Company o Boing 777
     Retorn: El nou avió.
      */
-    public static Avio nouAvio() {
+    public static Avio nouAvio() throws Exception{
         String codi, fabricant, model;
         int capacitat;
-        try{
+        
         System.out.println("\nCodi de l'avió:");
         codi = DADES.next();
-        } catch (Exception e) {
-            
+
+        if (GestioVolsExcepcio.comprovarCodiAvio(codi)){
+            GestioVolsExcepcio e = new GestioVolsExcepcio("2");
+            throw e;
         }
+        
         DADES.nextLine(); //Neteja de buffer
         System.out.println("\nFabricant de l'avió:");
         fabricant = DADES.nextLine();
@@ -141,6 +147,16 @@ public class Avio implements Component{
         
         System.out.println("\nEl codi de l'avió és: "+codi);
         codi = String.valueOf(demanarDades("\nQuin és el nou Codi de l'avió?",2));
+        
+        
+        if (GestioVolsExcepcio.comprovarCodiAvio(codi)){
+            GestioVolsExcepcio e = new GestioVolsExcepcio("2");
+            try {
+                throw e;
+            } catch (GestioVolsExcepcio ex) {
+                Logger.getLogger(Avio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         demanarDades("",4); //Netejar buffer
         System.out.println("\nEl fabricant de l'avió és: "+ fabricant);
         fabricant = String.valueOf(demanarDades("\nQuin és el nou fabricant de l'avió?",4));
