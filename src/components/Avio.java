@@ -111,9 +111,12 @@ public class Avio implements Component{
     public static Avio nouAvio() {
         String codi, fabricant, model;
         int capacitat;
-
+        try{
         System.out.println("\nCodi de l'avió:");
         codi = DADES.next();
+        } catch (Exception e) {
+            
+        }
         DADES.nextLine(); //Neteja de buffer
         System.out.println("\nFabricant de l'avió:");
         fabricant = DADES.nextLine();
