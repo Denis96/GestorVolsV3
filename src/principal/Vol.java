@@ -155,8 +155,8 @@ public class Vol implements Component {
         int hora, minuts;
 
         System.out.println("\nCodi del vol?");
-        codi = DADES.next();
-
+        codi = comprovarCodiRuta( DADES.next() );
+		
         System.out.println("\nData de sortida del vol?: (dd-mm-yyyy)");
         dataSortida = new SimpleDateFormat("dd-MM-yyyy").parse(DADES.next());
         System.out.println("\nData d'arribada del vol?: (dd-mm-yyyy)");
