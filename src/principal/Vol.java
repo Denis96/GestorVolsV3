@@ -18,6 +18,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import principal.GestioVolsExcepcio;
 
 /**
  *
@@ -148,15 +151,20 @@ public class Vol implements Component {
     i nanosegons no els tindrem en compte.
     Retorn: El nou vol.
      */
-    public static Vol nouVol() throws ParseException {
+    public static Vol nouVol() throws ParseException, Exception {
         String codi;
         Date dataSortida, dataArribada;
         LocalTime horaSortida, horaArribada;
         int hora, minuts;
 
         System.out.println("\nCodi del vol?");
-        codi = comprovarCodiRuta( DADES.next() );
+        codi = DADES.next();
 		
+        if (GestioVolsExcepcio.comprovarCodiRuta( codi )) {
+			GestioVolsExcepcio e = new GestioVolsExcepcio("4");
+			throw e;
+        }  
+				
         System.out.println("\nData de sortida del vol?: (dd-mm-yyyy)");
         dataSortida = new SimpleDateFormat("dd-MM-yyyy").parse(DADES.next());
         System.out.println("\nData d'arribada del vol?: (dd-mm-yyyy)");
@@ -197,6 +205,15 @@ public class Vol implements Component {
 
         System.out.println("\nEl codi del vol és: " + codi);
         codi = String.valueOf(demanarDades("\nQuin és el nou codi del vol?", 2));
+		
+        if (GestioVolsExcepcio.comprovarCodiRuta( codi )) {
+			GestioVolsExcepcio e = new GestioVolsExcepcio("4");
+			try {
+				throw e;
+			} catch (GestioVolsExcepcio ex) {
+				Logger.getLogger(Vol.class.getName()).log(Level.SEVERE, null, ex);
+			}
+        }  
 
         System.out.println("\nLa data de sortida del vol és: " + new SimpleDateFormat("dd-MM-yyyy").format(dataSortida));
         dataSortida = new SimpleDateFormat("dd-MM-yyyy").parse(String.valueOf(demanarDades("\nQuina és la nova data de sortida del vol?: (dd-mm-yyyy)", 2)));
