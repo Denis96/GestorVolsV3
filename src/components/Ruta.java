@@ -1,6 +1,9 @@
 package components;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import principal.Component;
+import principal.GestioVolsExcepcio;
 
 /**
  *
@@ -72,6 +75,16 @@ public abstract class Ruta implements Component {
 
         System.out.println("\nEl codi de la ruta és:" + codi);
         codi = String.valueOf(demanarDades("\nQuin és el nou codi de la ruta?",2));
+		
+		
+        if (GestioVolsExcepcio.comprovarCodiRuta( codi )) {
+			GestioVolsExcepcio e = new GestioVolsExcepcio("4");
+			try {
+				throw e;
+			} catch (GestioVolsExcepcio ex) {
+				Logger.getLogger(Ruta.class.getName()).log(Level.SEVERE, null, ex);
+			}
+        }  
         demanarDades("",4); //Netejar buffer
         System.out.println("\nL'aeroport d'origen de la ruta és:" + aeroportOri);
         aeroportOri = String.valueOf(demanarDades("\nQuin és el nou l'aeroport d'origen de la ruta?",4));
