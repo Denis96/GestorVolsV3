@@ -14,6 +14,7 @@ import components.TripulantCabina;
 import java.text.ParseException;
 import java.util.Scanner;
 import persistencia.GestorPersistencia;
+import principal.GestioVolsExcepcio;
 
 /**
  *
@@ -28,11 +29,15 @@ public class Aplicacio {
     private static Companyia companyiaActual = null; //Companyia seleccionada
     private static GestorPersistencia gp = new GestorPersistencia();
 
-    public static void main(String[] args) throws ParseException {
-        menuPrincipal();
+    public static void main(String[] args) throws ParseException, GestioVolsExcepcio {
+        try{
+            menuPrincipal();
+        } catch (GestioVolsExcepcio e){
+            System.out.println(e.getMessage());;
+        }
     }
 
-    private static void menuPrincipal() throws ParseException {
+    private static void menuPrincipal() throws ParseException, GestioVolsExcepcio {
         int opcio = 0;
 
         do {
