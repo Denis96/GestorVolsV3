@@ -1,9 +1,14 @@
 package persistencia;
 
-import java.io.FileWriter;
-import nu.xom.*;
+import components.Avio;
+import components.Ruta;
+import components.Tripulant;
 import principal.Companyia;
 import principal.GestioVolsExcepcio;
+import principal.Vol;
+import java.io.*;
+import nu.xom.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -54,6 +59,28 @@ public class GestorXML implements ProveedorPersistencia {
      *Retorn: cap
      */
     private void construirModel(Companyia pCompanyia){
+        Element companyia = new Element("companyia");
+			companyia.addAttribute(new Attribute("codi", Integer.toString(pCompanyia.getCodi())));
+			companyia.addAttribute(new Attribute("nom", pCompanyia.getNom()));
+			
+			for (int i = 0; i < pCompanyia.getComponents().size(); i++) {
+				
+				if (pCompanyia.getComponents().get(i) instanceof Avio) {
+					
+					Element avio = new Element("avio");
+						////////////////////// AYUDEN-MEE
+						avio.addAttribute(new Attribute("codi", pCompanyia.getComponents().get(i).getCodi()));
+					
+				} else if (pCompanyia.getComponents().get(i) instanceof Ruta) {
+					
+				} else if (pCompanyia.getComponents().get(i) instanceof Tripulant) {
+					
+				} else if (pCompanyia.getComponents().get(i) instanceof Vol) {
+					
+				}
+				
+				
+			}
         
     }
 
