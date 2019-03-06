@@ -122,7 +122,7 @@ public class Companyia implements Component {
     /*
      AVIÓ
      */
-    public void afegirAvio(Avio avio) {
+    public void afegirAvio(Avio avio) throws Exception {
 
         if (avio == null) {
             avio = Avio.nouAvio();
@@ -241,7 +241,7 @@ public class Companyia implements Component {
     /*
      VOL
      */
-    public void afegirVol(Vol vol) throws ParseException {
+    public void afegirVol(Vol vol) throws ParseException, Exception {
 
         if (vol == null) {
             vol = Vol.nouVol();

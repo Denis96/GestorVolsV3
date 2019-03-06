@@ -1,6 +1,8 @@
 package persistencia;
 
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import nu.xom.*;
 import principal.Companyia;
 import principal.GestioVolsExcepcio;
