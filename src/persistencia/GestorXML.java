@@ -1,11 +1,14 @@
 package persistencia;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import nu.xom.*;
+import components.Avio;
+import components.Ruta;
+import components.Tripulant;
 import principal.Companyia;
 import principal.GestioVolsExcepcio;
+import principal.Vol;
+import java.io.*;
+import nu.xom.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -56,6 +59,28 @@ public class GestorXML implements ProveedorPersistencia {
      *Retorn: cap
      */
     private void construirModel(Companyia pCompanyia){
+        Element companyia = new Element("companyia");
+			companyia.addAttribute(new Attribute("codi", Integer.toString(pCompanyia.getCodi())));
+			companyia.addAttribute(new Attribute("nom", pCompanyia.getNom()));
+			
+			for (int i = 0; i < pCompanyia.getComponents().size(); i++) {
+				
+				if (pCompanyia.getComponents().get(i) instanceof Avio) {
+					
+					Element avio = new Element("avio");
+						////////////////////// AYUDEN-MEE
+						avio.addAttribute(new Attribute("codi", pCompanyia.getComponents().get(i).getCodi()));
+					
+				} else if (pCompanyia.getComponents().get(i) instanceof Ruta) {
+					
+				} else if (pCompanyia.getComponents().get(i) instanceof Tripulant) {
+					
+				} else if (pCompanyia.getComponents().get(i) instanceof Vol) {
+					
+				}
+				
+				
+			}
         
     }
 
@@ -103,7 +128,13 @@ public class GestorXML implements ProveedorPersistencia {
      *
      *Retorn: cap
      */
-    private void obtenirDades() {
+    private void obtenirDades() throws ParsingException, IOException {
+       Builder analitzador = new Builder();
+       Document doc = analitzador.build("C:\\Users\\Ismael\\Documents\\NetBeansProjects\\GestioVolsV3Enunciat");
        
+       Element arrel = doc.getRootElement();
+       Attribute nomCompanyia = arrel.getAttribute("nom");
+       
+       Companyia gestor = new Companyia();
     }
 }
