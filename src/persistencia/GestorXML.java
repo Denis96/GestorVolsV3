@@ -254,7 +254,13 @@ public class GestorXML implements ProveedorPersistencia {
      *
      *Retorn: cap
      */
-    private void obtenirDades() {
+    private void obtenirDades() throws ParsingException, IOException {
+       Builder analitzador = new Builder();
+       Document doc = analitzador.build("C:\\Users\\Ismael\\Documents\\NetBeansProjects\\GestioVolsV3Enunciat");
        
+       Element arrel = doc.getRootElement();
+       Attribute nomCompanyia = arrel.getAttribute("nom");
+       
+       Companyia gestor = new Companyia();
     }
 }
